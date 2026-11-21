@@ -1,0 +1,26 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+        // 中国大陆网络若无法访问 google()/mavenCentral()，改用阿里云镜像（把上面三行注释掉，
+        // 取消下面三行注释）：
+        // maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") }
+        // maven { url = uri("https://maven.aliyun.com/repository/google") }
+        // maven { url = uri("https://maven.aliyun.com/repository/central") }
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        // 中国大陆镜像备选：
+        // maven { url = uri("https://maven.aliyun.com/repository/google") }
+        // maven { url = uri("https://maven.aliyun.com/repository/central") }
+    }
+}
+
+rootProject.name = "FloatKit"
+include ':app'

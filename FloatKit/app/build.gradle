@@ -1,0 +1,43 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.floatkit.panel'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.floatkit.panel"
+        minSdk 24              // Android 7.0
+        targetSdk 33           // 33 可避免 Android 14 对前台服务类型的强制限制
+        versionCode 1
+        versionName "1.0.0"
+        // 应用为纯 Java + 系统 API 实现，无任何第三方依赖
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // 使用 debug 签名，方便自己直接安装 release 包
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+}
+
+// 无远程依赖，构建过程不需要访问 Maven 仓库（下载 Gradle 发行版除外）
+dependencies {
+}
